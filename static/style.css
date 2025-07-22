@@ -1,0 +1,221 @@
+/* ============== BASE STYLES ============== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+  background: linear-gradient(135deg, #e0f7fa, #fffde7), 
+              linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+              url('your-image-url.jpg');
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 50px;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 102, 204, 0.15);
+  padding: 30px;
+  width: 80%;
+  max-width: 800px;
+  margin: 20px 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* ============== CARD STYLES ============== */
+.card {
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 102, 204, 0.15);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 102, 204, 0.2);
+}
+
+.card-header {
+  background: rgba(0, 102, 204, 0.85);
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+  border-radius: 12px 12px 0 0 !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 1rem 1.25rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* ============== FORM STYLES ============== */
+.form-control, .form-select {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+}
+
+.form-control:focus, .form-select:focus {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.15);
+  outline: none;
+}
+
+/* ============== BUTTON STYLES ============== */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  background: linear-gradient(135deg, rgba(40, 167, 69, 0.9), rgba(33, 136, 56, 0.9));
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  color: white;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, rgba(40, 167, 69, 1), rgba(33, 136, 56, 1));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+/* ============== PREDICTION RESULT STYLES ============== */
+#result {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  margin: 15px 0;
+  padding: 15px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.prediction-high {
+  color: rgba(40, 167, 69, 0.9);
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
+}
+
+.prediction-low {
+  color: rgba(220, 53, 69, 0.9);
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(220, 53, 69, 0.2);
+}
+
+/* ============== CHART STYLES ============== */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card-body canvas {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 10px 15px;
+}
+
+/* ============== UTILITY STYLES ============== */
+.loading, .loading-text {
+  color: #3498db;
+  font-style: italic;
+}
+
+.error-text {
+  color: #e74c3c;
+  font-weight: bold;
+  animation: shake 0.5s;
+}
+
+.text-danger {
+  color: rgba(220, 53, 69, 0.9);
+}
+
+/* ============== ANIMATIONS ============== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid rgba(0, 123, 255, 0.8);
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ============== RESPONSIVE STYLES ============== */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+  
+  .chart-container {
+    height: 250px;
+  }
+  
+  #result {
+    font-size: 1.2rem;
+  }
+  
+  .card {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+}
+
+/* ============== TYPOGRAPHY ============== */
+h1, h3 {
+  color: rgba(0, 64, 133, 0.9);
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+}

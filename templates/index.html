@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Salary Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Employee Salary Prediction</h1>
+        
+        <div class="row">
+            <!-- Left Column - Input Form -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Input Employee Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="predictionForm">
+                            <div class="row">
+                                <!-- Column 1 -->
+                                <div class="col-md-6">
+                                    <!-- Basic Info -->
+                                    <div class="mb-3">
+                                        <label for="age" class="form-label">Age*</label>
+                                        <input type="number" class="form-control" id="age" min="18" max="80" required>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="workclass" class="form-label">Workclass*</label>
+                                        <select class="form-select" id="workclass" required>
+                                            <option value="">Select Workclass</option>
+                                            <option value="Private">Private</option>
+                                            <option value="Self-emp-not-inc">Self-employed (not incorporated)</option>
+                                            <option value="Self-emp-inc">Self-employed (incorporated)</option>
+                                            <option value="Federal-gov">Federal government</option>
+                                            <option value="Local-gov">Local government</option>
+                                            <option value="State-gov">State government</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="education" class="form-label">Education*</label>
+                                        <select class="form-select" id="education" required>
+                                            <option value="">Select Education</option>
+                                            <option value="Bachelors">Bachelor's</option>
+                                            <option value="Some-college">Some College</option>
+                                            <option value="HS-grad">High School Graduate</option>
+                                            <option value="Masters">Master's</option>
+                                            <option value="Doctorate">Doctorate</option>
+                                            <option value="Assoc-acdm">Associate (Academic)</option>
+                                            <option value="Assoc-voc">Associate (Vocational)</option>
+                                            <option value="Prof-school">Professional School</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="marital-status" class="form-label">Marital Status*</label>
+                                        <select class="form-select" id="marital-status" required>
+                                            <option value="">Select Status</option>
+                                            <option value="Married-civ-spouse">Married (Civilian)</option>
+                                            <option value="Divorced">Divorced</option>
+                                            <option value="Never-married">Never Married</option>
+                                            <option value="Separated">Separated</option>
+                                            <option value="Widowed">Widowed</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Column 2 -->
+                                <div class="col-md-6">
+                                    <!-- Job Details -->
+                                    <div class="mb-3">
+                                        <label for="occupation" class="form-label">Occupation*</label>
+                                        <select class="form-select" id="occupation" required>
+                                            <option value="">Select Occupation</option>
+                                            <option value="Tech-support">Tech Support</option>
+                                            <option value="Craft-repair">Craft/Repair</option>
+                                            <option value="Exec-managerial">Executive/Managerial</option>
+                                            <option value="Prof-specialty">Professional Specialty</option>
+                                            <option value="Sales">Sales</option>
+                                            <option value="Adm-clerical">Administrative/Clerical</option>
+                                            <option value="Transport-moving">Transport/Moving</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="relationship" class="form-label">Relationship*</label>
+                                        <select class="form-select" id="relationship" required>
+                                            <option value="">Select Relationship</option>
+                                            <option value="Husband">Husband</option>
+                                            <option value="Wife">Wife</option>
+                                            <option value="Own-child">Own Child</option>
+                                            <option value="Not-in-family">Not in Family</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <!-- Personal Details -->
+                                    <div class="mb-3">
+                                        <label for="race" class="form-label">Race*</label>
+                                        <select class="form-select" id="race" required>
+                                            <option value="">Select Race</option>
+                                            <option value="White">White</option>
+                                            <option value="Black">Black</option>
+                                            <option value="Asian-Pac-Islander">Asian/Pacific Islander</option>
+                                            <option value="Amer-Indian-Eskimo">American Indian/Eskimo</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="gender" class="form-label">Gender*</label>
+                                        <select class="form-select" id="gender" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Full Width Financial Inputs -->
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="capital-gain" class="form-label">Capital Gain ($)</label>
+                                        <input type="number" class="form-control" id="capital-gain" min="0" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="capital-loss" class="form-label">Capital Loss ($)</label>
+                                        <input type="number" class="form-control" id="capital-loss" min="0" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="hours-per-week" class="form-label">Hours/Week*(h)</label>
+                                        <input type="number" class="form-control" id="hours-per-week" min="1" max="100" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Predict Salary</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Results and Visualizations -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Prediction Result</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <div id="result" class="display-4 my-4">
+                            Submit details to get prediction
+                        </div>
+                        <div id="probability" class="text-muted fs-5">
+                            Probability: -
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>Salary Distribution</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="salaryChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>Feature Importance</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="static/feature_importance.png" alt="Feature Importance" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Age vs Income</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Education vs Income</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="educationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
