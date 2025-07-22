@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment folders
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# IDE settings
+.vscode/
+
+# Flask and model files
+*.pkl
+*.csv
+*.db
+.env
+
+# Jupyter checkpoints
+.ipynb_checkpoints
+
+# OS files
+.DS_Store
+Thumbs.db
